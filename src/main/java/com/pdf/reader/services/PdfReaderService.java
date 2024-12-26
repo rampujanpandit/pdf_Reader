@@ -23,7 +23,6 @@ public class PdfReaderService {
     public List<PdfSection> savePdfSections(MultipartFile file) throws IOException {
         List<PdfSection> sections = extractPdfSections(file);
 
-        // Save to database
         return repository.saveAll(sections);
     }
 
@@ -34,7 +33,6 @@ public class PdfReaderService {
             PDFTextStripper pdfStripper = new PDFTextStripper();
             String text = pdfStripper.getText(document);
 
-            // Logic to parse sections
             String[] lines = text.split("\\r?\\n");
             String currentSection = "Introduction";
 
@@ -55,7 +53,6 @@ public class PdfReaderService {
                 }
             }
 
-            // Save the last section
             if (content.length() > 0) {
                 PdfSection section = new PdfSection();
                 section.setSectionName(currentSection);

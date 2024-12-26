@@ -15,10 +15,9 @@ public class PdfSection {
 
     private String sectionName;
 
-    @Column(columnDefinition = "TEXT") // Allows larger text storage
+    @Column(columnDefinition = "TEXT")
     private String sectionContent;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
